@@ -1,19 +1,43 @@
-import type { Config } from "tailwindcss";
+import { nextui } from '@nextui-org/react'
+import type { Config } from 'tailwindcss'
 
 const config: Config = {
   content: [
-    "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
-    "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
-    "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
+    './src/pages/**/*.{js,ts,jsx,tsx,mdx}',
+    './src/components/**/*.{js,ts,jsx,tsx,mdx}',
+    './src/app/**/*.{js,ts,jsx,tsx,mdx}',
+    './node_modules/@nextui-org/theme/dist/**/*.{js,ts,jsx,tsx}',
   ],
   theme: {
     extend: {
       colors: {
-        background: "var(--background)",
-        foreground: "var(--foreground)",
+        background: 'var(--background)',
+        foreground: 'var(--foreground)',
+      },
+      fontFamily: {
+        noto: [
+          'var(--font-noto-sans-jp)',
+          'BlinkMacSystemFont',
+          'Roboto',
+          'Segoe UI',
+          'Helvetica Neue',
+          'HelveticaNeue',
+          '游ゴシック体',
+          'YuGothic',
+          '游ゴシック Medium',
+          'Yu Gothic Medium',
+          '游ゴシック',
+          'Yu Gothic',
+          'Verdana',
+          'メイリオ',
+          'Meiryo',
+          'sans-serif',
+        ],
+        mono: ['var(--font-roboto-mono)'],
       },
     },
   },
-  plugins: [],
-};
-export default config;
+  darkMode: 'class',
+  plugins: [nextui()],
+}
+export default config

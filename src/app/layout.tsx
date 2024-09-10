@@ -1,16 +1,20 @@
+import '@/styles/globals.css'
 import type { Metadata } from 'next'
-import localFont from 'next/font/local'
-import './globals.css'
 
-const geistSans = localFont({
-  src: './fonts/GeistVF.woff',
-  variable: '--font-geist-sans',
-  weight: '100 900',
+import { Noto_Sans_JP, Roboto_Mono } from 'next/font/google'
+import { twMerge } from 'tailwind-merge'
+import { Providers } from './providers'
+
+const NotoSansJp = Noto_Sans_JP({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-noto-sans-jp',
 })
-const geistMono = localFont({
-  src: './fonts/GeistMonoVF.woff',
-  variable: '--font-geist-mono',
-  weight: '100 900',
+
+const RobotoMono = Roboto_Mono({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-roboto-mono',
 })
 
 export const metadata: Metadata = {
@@ -24,8 +28,12 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>{children}</body>
+    <html lang='ja' className={`${NotoSansJp.variable} ${RobotoMono.variable}`}>
+      <body className={twMerge('font-noto min-h-screen bg-background antialiased')}>
+        <Providers>
+          <div className='relative flex h-screen flex-col'>{children}</div>
+        </Providers>
+      </body>
     </html>
   )
 }

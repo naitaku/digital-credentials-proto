@@ -3,11 +3,13 @@ interface PresentationDefinition {
   input_descriptors: unknown
 }
 
+type Protocol = 'openid4vp'
+
 interface IdentiryContainer {
   get(options: {
     digital: {
       providers: {
-        protocol: 'openid4vp'
+        protocol: Protocol
         request: {
           client_id: string
           client_id_scheme: 'web-origin'
@@ -18,8 +20,10 @@ interface IdentiryContainer {
       }[]
     }
   }): Promise<{
-    protocol: unknown
-    data: unknown
+    id: string
+    type: string
+    protocol: Protocol
+    data: string
   }>
 }
 
